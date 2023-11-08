@@ -1,0 +1,5 @@
+INDEX VERSION 1.134
+C:\Users\Academy\Documents\workspace-spring-tool-suite-4-4.20.0.RELEASE\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3584421839.index
+\WebApplication_Servlets_EJB\src\main\java
+C:\Users\Academy\Documents\workspace-spring-tool-suite-4-4.20.0.RELEASE\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3588894857.index
+\WebApplication_Servlets\src\main\java

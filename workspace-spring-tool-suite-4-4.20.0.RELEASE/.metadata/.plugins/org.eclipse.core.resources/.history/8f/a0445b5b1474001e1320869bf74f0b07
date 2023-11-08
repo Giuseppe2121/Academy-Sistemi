@@ -1,0 +1,5 @@
+package com.sistemi.service;
+
+public interface BancomatService {
+
+}

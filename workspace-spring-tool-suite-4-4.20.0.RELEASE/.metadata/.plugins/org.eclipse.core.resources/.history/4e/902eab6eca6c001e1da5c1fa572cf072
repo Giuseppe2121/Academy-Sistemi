@@ -1,0 +1,112 @@
+package com.servlet;
+
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.SQLException;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.connection.ConnectionManager;
+import com.dao.StudentDAO;
+import com.dto.StudentDTO;
+import com.singleton.DAOSingleton;
+import com.sql.SqlScript;
+
+@WebServlet("/registration")
+public class StudentRegistrationServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		Connection con = null;
+
+		int nRowsInserted = 0;
+
+		/*
+		 * inizializzazione di una mappa web che consnete di archiviare le informazioni
+		 * elaborate durante il flusso di richiesta in maniera tale da rendelre
+		 * disponibili nel flusso di risposta (HttpSession rappresenta uno strumento
+		 * fornito dalla JAVA EE per ovviare al problema della natura STATELESS del
+		 * protocollo hhtp)
+		 */
+		HttpSession session = request.getSession();
+
+		/*
+		 * dobbiamo recueprare le informazioni insertie nel corpo della richiesta
+		 * (conetunto della form)
+		 */
+
+		/*
+		 * Ogni volta che invochiamo il metodo getParameter dobbiamo indicare in input
+		 * il nome di un corrispondente campo delle form rappresentante la richiesta
+		 */
+		String firstName = request.getParameter("firstName");
+		String lastName = request.getParameter("lastName");
+		String age = request.getParameter("age");
+
+		/*
+		 * Le informazioni recuperate dal client(studentRegistration.html) devono essere
+		 * inserite sul database
+		 */
+
+		/*
+		 * istanza del DAO per invocare il metodo addStudent e inserire sul databse
+		 */
+
+		StudentDAO studentDAO = DAOSingleton.getStudentDAOInstance();
+
+		/*
+		 * Valorizzazione di un Oggetto StudentDTO con le informazioni recuperate dalla
+		 * form della pagina studentRegistration.html
+		 */
+		StudentDTO studentDTO = new StudentDTO(firstName, lastName, Integer.parseInt(age));
+
+		/*
+		 * apertura connessione
+		 */
+
+		try {
+			con = DAOSingleton.getSingletonConnection();
+			// inserimento sul database
+			nRowsInserted = studentDAO.addStudent(SqlScript.sqlInsert, con, studentDTO);
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		}
+
+		finally {
+
+			if (con != null) {
+
+				try {
+					ConnectionManager.closeConnection(con);
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+
+		}
+		// fine flusso di richiesta
+
+		// getsione flusso di risposta
+		if (nRowsInserted > 0) {
+
+			session.setAttribute("studentDTO", studentDTO); // è convenzione usare una stringa "" chiamando la chiave
+															// con lo stesso nome
+
+			response.sendRedirect("success.jsp");
+		}
+
+		else {
+
+			response.sendRedirect("error.html");
+		}
+
+	}
+
+}

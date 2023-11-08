@@ -1,0 +1,89 @@
+package com.sistemi.service;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
+
+import com.sistemi.entity.Book;
+import com.sistemi.repository.BookRepository;
+
+@Service
+public class BookServiceImpl implements BookService {
+
+	Logger log = LoggerFactory.getLogger(this.getClass());
+
+	@Value("${message.save.success}")
+	private String saveSuccess;
+	@Value("${message.save.fail}")
+	private String saveFail;
+	@Value("${message.remove.success}")
+	private String removeSuccess;
+	@Value("${message.remove.fail}")
+	private String removeFail;
+	@Value("${message.read.fail}")
+	private String readFail;
+
+	@Autowired
+	private BookRepository bookRepository;
+
+	@Override
+	public void saveOrUpdateBook(Book book) {
+
+		/*
+		 * quando invochiamo il metodo save di Spring Data JPa l'invocazione viene
+		 * tradotta da Spring Data Jpa nel seguente codice:
+		 * 
+		 * @PersistenceContext private EntityManager em;
+		 * 
+		 * em.persist(book) oppure em.merge(book)
+		 * 
+		 */
+		if (book != null && bookRepository.save(book).getIsbn() == book.getIsbn()) {
+
+			log.info(saveSuccess);
+
+		}
+
+		else {
+
+			log.info(saveFail);
+		}
+
+	}
+
+	@Override
+	public void removeBook(long isbn) {
+
+		if (bookRepository.existsById(isbn)) {
+
+			bookRepository.deleteById(isbn);
+
+			if (!bookRepository.existsById(isbn)) {
+
+				log.info(removeSuccess);
+			}
+			
+			else {
+				
+				log.info(removeFail);
+			}
+
+		}
+
+		else {
+
+			log.info(removeFail);
+		}
+
+	}
+
+	@Override
+	public void findAllBooks() {
+
+		bookRepository.findAll();
+
+	}
+
+}

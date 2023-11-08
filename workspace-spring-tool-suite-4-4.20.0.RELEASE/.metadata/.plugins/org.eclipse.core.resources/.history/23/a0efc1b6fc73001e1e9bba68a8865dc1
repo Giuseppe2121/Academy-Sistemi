@@ -1,0 +1,15 @@
+package com.sistemi.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.sistemi.entity.Book;
+
+public interface BookRepository extends JpaRepository<Book, Long> {       //Long sarebbe il wrapper di long su Book.java
+	
+	//E' abilitato a fare questi metodi overridandoli dal FrameWork JpaReposiotry
+	//findAll
+	//deleteById
+	//save
+	//findById
+
+}

@@ -1,0 +1,140 @@
+package com.sistemi.repository;
+
+import java.util.List;
+
+import org.springframework.stereotype.Repository;
+
+import com.sistemi.entity.Student;
+
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+
+import jakarta.transaction.Transactional;
+/*
+ * Repository è un'annotation Stereotype
+ * quindi nel momento in cui chiederemo all'IoC
+ * Container della Spring JVM di effettuare l'@Autowired
+ * di questa classe l'IoC Container lo farà in quanto riconoscerà
+ * questa classe come uno Spring Bean, ovvero una classe istanziabile 
+ * tramite Dependency Injection
+ */
+
+@Transactional
+@Repository
+public class StudentRepositoryImpl implements StudentRepository {
+
+	/*
+	 * Secondo le specifiche Java EE per usare l'intefaccia EntityManager occorre
+	 * inizializzare una variabile di tipo EntityManager utilizzando la seguente
+	 * procedura:
+	 */
+	@PersistenceContext
+	private EntityManager em;
+	
+	
+	@Override
+	public void addStudent(Student student) { // usiamo Student che sarebbe l'Entity come se fosse il DTO
+
+		/*
+		 * Hibernate nel momento in cui vede l'invocazione del metodo persist comprende
+		 * che deve effettuare un operazione di insert sul database
+		 * 
+		 * Hibernate sa che per effettuare un'operazione sul database occorre prima
+		 * aprire una connessione al database Hibernate si aspetta una istruzione
+		 * specifica per aprire la connessione al database, si aspetta in pratica
+		 * l'apertura di un contesto transazionale tramite annotation @Transactional (si
+		 * aggiunge l'annotation @Transactional al metodo, in questo caso si aggiunge al
+		 * public addStudent)
+		 */
+
+		em.persist(student);
+
+		/*
+		 * Hibernate dopo l'apertura della connesione traduce il metodo persist nel
+		 * seguente script sql: insert into student (first_name, last_name, age) values
+		 * ('student.getFirstName()', 'student.getLastName()', 'student.getAge()');
+		 * 
+		 * Hibernate chiude la connessione
+		 */
+
+	}
+	
+	@Override
+	public void updateStudent(Student student) {
+
+		/*
+		 * quando viene invocato il metodo merge Hibernate assume che occore aggiornare
+		 * un record gia esistente all'interno del Database, per cui esegue le seguenti
+		 * azioni:
+		 * 
+		 * 1- controlla se effetivamente il record esiste (verifica se esiste un record
+		 * con la chiave primaria inserita all'interno dell'Oggetto Entity, per cui
+		 * nell'Oggetto deve essere presente l'informazione della chiave primaria)
+		 * 
+		 * 2-se il record non esiste Hibernate lancia un'eccezione
+		 * 
+		 * 3- se il record esiste Hibernate esegue l'aggiornamento
+		 */
+
+		// 1 select * from student whwere id = student.getId();
+		// 2 update student set first_name=? student.getFirstName(),
+		// last_name=student.getLastName(), age=student.getAge() where id
+		// =student.getId();
+		em.merge(student);
+
+	}
+	
+	@Override
+	public void removeStudent(int id) {
+
+		/*
+		 * In input al metodo arriva l'Id dello studente da cancellare il metodo find
+		 * rappresenta un istruzione per Hibernate:
+		 * 
+		 * select * from student where id= id(input al metodo)
+		 */
+		Student student = em.find(Student.class, id);
+
+		/*
+		 * il metodo remove viene tradotto da Hibernate nel seguente script sql: delete
+		 * from student where id=id passato in input al metodo
+		 */
+		em.remove(student);
+	}
+	
+	@Override
+	public List<Student> findAllStudents() {
+
+		// JPQL
+		// select * from student
+
+		/*
+		 * la query JPQL che arriva ain input a metodo creatNamedQuery(select s from
+		 * Student s) viene tradotta da Hibernate nel seguente coidce sql: 
+		 * (Student è l'Entity) 
+		 * 
+		 * select * from student
+		 */
+		return em.createNamedQuery("Student.findAllStudents", Student.class).getResultList();
+	}
+	
+	@Override
+	public List <Student> findAllStudentsByLastName(String lastName){
+		
+		//maniera per scrivere meno codice rispetto al metodo utilizzato sotto 
+		// em.createNamedQuery("Student.findAllStudentsByLastName", Student.class) mi restituisce un TypedQuery (un interfaccia che contiene dei metodi che possiamo usare)
+		//quindi possiamo usare lo stesso il setParameter anche senza specificarlo
+		return em.createNamedQuery("Student.findAllStudentsByLastName", Student.class).setParameter("lastName", lastName).getResultList();
+		
+//		metodo con stessa efficienza ma con più codice scritto
+//		//query = "select s from Student s where s.lastName=:lastName
+//		TypedQuery<Student> q = em.createNamedQuery("Student.findAllStudentsByLastName", Student.class);   
+//		//usiamo TypedQuery perchè ci permette di usare il setParameter e quindi dare un valore a ":lastName" per il cognome che dobbiamo cercare 
+//		
+//		q.setParameter("lastName", lastName);
+//		return q.ResultList();
+		
+		
+	}
+
+}

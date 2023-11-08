@@ -1,0 +1,5 @@
+package com.sistemi.entity;
+
+public class Bancomat {
+
+}

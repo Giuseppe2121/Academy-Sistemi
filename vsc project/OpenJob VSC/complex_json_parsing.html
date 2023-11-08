@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="pers1"></div>
+    <div id="pers2"></div>
+
+    <script>
+        /*
+        MOCK di un JSON complesso
+        sintassi 1
+        */
+
+        var person1 = {
+            "name": "Mario Rossi",   //json semplice, un solo valore
+            "car": {                 //json complesso, innestato
+
+                "car1": "Lamborghini",
+                "car2": "Ferrari"
+
+            }
+        }
+
+        /*
+        MOCK di un JSON complesso 
+        sintassi 2
+        */
+
+        var person2 = {
+            "name":"Valerio  Giallini",
+            "car": ["Lotus","Bentley"]
+
+
+        }
+
+        document.getElementById("pers1").innerHTML =
+            person1.name + " " +
+            person1.car.car1 + " " +
+            person1.car.car2
+
+         document.getElementById("pers2").innerHTML =
+            person2.name + " " +
+            person2.car [0]+ " " +
+            person2.car [1]
+
+            //potevamo fare anche person2.car per il secondo
+
+
+    </script>
+
+
+
+
+</body>
+
+</html>

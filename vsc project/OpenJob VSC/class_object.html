@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <aside id="pers1"></aside>
+    <script>
+        class Person {
+
+            constructor(firstName, lastName, age) {
+
+                /*
+                This in questo caso si riferisce alla classe e serve
+                a creare contestualmente una variabile di istanza della classe
+                (senza doverla dichiarare rpima esternamente al costruttore 
+                come si deve fare ad esempio in Java)
+                */
+
+                this.firstName = firstName
+                this.lastName = lastName
+                this.age = age
+
+            }
+
+
+            eat() {
+
+                alert("A person eats");
+            }
+
+            eat() {
+
+                alert("People eat");
+            }
+
+
+
+        }
+
+        var person1 = new Person("Mario","Verdini",26)
+        person1.address="Via dei Mille"
+       // person1.eat();
+
+       document.getElementById("pers1").innerHTML = person1.lastName + " " +
+       person1.address; 
+
+    </script>
+
+</body>
+
+</html>

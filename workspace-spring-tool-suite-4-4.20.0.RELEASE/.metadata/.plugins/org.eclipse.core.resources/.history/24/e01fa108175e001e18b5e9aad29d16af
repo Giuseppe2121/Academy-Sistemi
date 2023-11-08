@@ -1,0 +1,20 @@
+package com.aziende;
+
+public class Azienda {
+
+	public void produce() {
+
+		System.out.println("produce");
+	}
+
+	public void assumere() {
+
+		System.out.println("assume");
+	}
+
+	public void fattura() {
+
+		System.out.println("fattura");
+	}
+
+}

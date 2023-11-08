@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        
+
+        /*
+        let, se usato in un code block(ad esempio in un if), ha scope(visbilità) 
+        ristretto rispetto al code block
+        let se usato all'interno di uno script fuori da un block code ha scope di script
+        (quindi ha visibiltà globale e riusciremo a stamparlo, altrimenti avremmo dovuto
+        fare la stampa nell'if(code block) in questo caso )
+        invece var ha sempre scope globale (scope di script, quindi lo vesi sempre
+        sia se usato all'interno di un codeblock sia se usato all'esterno)
+        */
+        var firstName = "Gioele"
+        var lastName = "Marini"
+        let age = 24
+
+        if(firstName=="Gioele"){
+            var address = "Via dei Platani"
+            let fiscalCode = "fiscCode"
+        }
+
+        document.write(firstName),
+        document.write(lastName),
+        document.write(age),
+        document.write(address),
+        document.write(fiscalCode);
+
+
+
+
+
+      
+    </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+package com.sistemi.repository;
+
+import java.util.List;
+
+import org.springframework.stereotype.Repository;
+
+import com.sistemi.entity.Course;
+import com.sistemi.entity.Student;
+
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+import jakarta.transaction.Transactional;
+
+@Repository
+@Transactional
+public class CourseStudentRepositoryImpl implements CourseStudentRepository {
+	
+	@PersistenceContext
+	private EntityManager em;
+
+	@Override
+	public void addCourse(Course course) {
+		
+		
+		
+	}
+
+	@Override
+	public void addStudent(Student student) {
+		
+	}
+
+	@Override
+	public List<Student> findAllStudentByCourse(int courseId) {
+		return null;
+	}
+
+	@Override
+	public List<Course> findAllCoursesByStudent(int studentId) {
+		return null;
+	}
+
+}

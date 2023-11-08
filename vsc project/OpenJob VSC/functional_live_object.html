@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <aside id="pers1"></aside>
+    <script>
+        function Person(firstName, lastName, age){
+
+            /*
+            Utilizzare la keyword this dentro una function
+            Javascript equivale a poter dichiarare una variabile 
+            locale alla funzione 
+            */
+            this.firstName=firstName;
+            this.lastName=lastName;
+            this.age=age
+
+        }
+
+
+        /*
+        la keyword new può essere utilizzata per invocare una function
+
+        Nel caso in cui si inovchi una function con l'operatore new è possibile la 
+        creazione di un Live Object che verrà allocato nell'heap dal Javascript Engine
+        (le variabili locali della function diventano proprità dell'oggetto)
+        */
+        var person1 = new Person("Maria", "Bianchi", 23);
+
+        console.log(person1);
+        document.getElementById("pers1").innerHTML = person1.firstName + " " + person1.lastName +
+            " " + person1.age;
+    </script>
+</body>
+
+</html>

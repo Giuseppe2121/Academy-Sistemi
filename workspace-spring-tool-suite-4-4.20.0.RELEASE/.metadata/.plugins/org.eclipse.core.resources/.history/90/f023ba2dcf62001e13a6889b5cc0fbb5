@@ -1,0 +1,29 @@
+package com.connection;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+public class ConnectionManager implements ConnectionParameters {
+	
+	//apertura di una connessione e restituzione della stessa
+	
+
+	public Connection getConnection() throws ClassNotFoundException, SQLException {
+
+		Class.forName(dbDriver);
+
+		Connection con = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
+
+		return DriverManager.getConnection(dbUrl, dbUser, dbPassword);
+	}
+	
+	//inizializazione di un oggetto preparedStatement e restituzione dello stesso
+	public PreparedStatement getPreparedStatement(String sql) {
+		
+		getConnection().prepareStatement();
+		
+	}
+
+}

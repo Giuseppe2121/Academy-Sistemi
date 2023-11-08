@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <aside id="json"></aside>
+    <script>
+
+        /*
+        MOCK di un file JSON 
+        (in una situazione applicativa reale, una volta consumata
+        un'operazione esposta da un Wweb Service Provider, ci aspettiamo
+        un JSON di ritorno reale che poi dovremo "parsare")
+        */
+        var jsonExample = {
+            "firstName":"Giada",
+            "lastName":"Verdini",
+            "age":29
+        }
+
+        console.log(jsonExample);
+        
+        /*
+        Il Javascript Engine, dietro le quinte, 
+        effettua un "CAST" implicito di qualsiasi 
+        JSON in un Javascript Object
+        */
+
+        document.getElementById("json").innerHTML=
+        jsonExample.firstName + " " + 
+        jsonExample.lastName + " " + 
+        jsonExample.age
+    </script>
+
+</body>
+
+</html>

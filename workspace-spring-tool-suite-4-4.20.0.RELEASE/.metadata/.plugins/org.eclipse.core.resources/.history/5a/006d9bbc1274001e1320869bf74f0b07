@@ -1,0 +1,5 @@
+package com.sistemi.repository;
+
+public interface PersonRepository {
+
+}

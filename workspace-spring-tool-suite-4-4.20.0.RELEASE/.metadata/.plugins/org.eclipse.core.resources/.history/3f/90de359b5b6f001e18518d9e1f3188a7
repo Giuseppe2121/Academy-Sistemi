@@ -1,0 +1,29 @@
+package com.test;
+
+import java.sql.Connection;
+import java.sql.SQLException;
+
+import com.dao.StudentDAO;
+import com.dto.StudentDTO;
+import com.singleton.DAOSingleton;
+import com.sql.SqlScript;
+
+class Test {
+
+	@org.junit.jupiter.api.Test
+	void test1() throws ClassNotFoundException, SQLException {
+		
+		int nRowsInserted = 0;
+		
+		Connection con = DAOSingleton.getSingletonConnection();
+		
+		StudentDTO studentDTO = new StudentDTO("Geronimo", "savnoni",34);
+		
+		StudentDAO studentDAO = DAOSingleton.getStudentDAOInstance();
+		nRowsInserted = studentDAO.addStudent(SqlScript.sqlInsert, con, studentDTO);
+		
+		
+
+	}
+
+}

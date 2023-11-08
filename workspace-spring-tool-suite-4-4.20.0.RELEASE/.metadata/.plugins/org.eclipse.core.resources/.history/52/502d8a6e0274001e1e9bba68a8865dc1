@@ -1,0 +1,44 @@
+package com.sistemi;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import com.sistemi.entity.Book;
+import com.sistemi.service.BookService;
+
+@SpringBootApplication
+public class SbSpringDataJpaCrudApplication implements CommandLineRunner {
+	
+	@Autowired
+	private BookService bookService;
+
+	public static void main(String[] args) {
+		SpringApplication.run(SbSpringDataJpaCrudApplication.class, args);
+	}
+
+	@Override
+	public void run(String... args) throws Exception {
+		
+		Book book1 = new Book(1234, "book1", "dramatic");
+		Book book2 = new Book(1235, "book2", "dramatic");
+		Book book3 = new Book(1236, "book3", "thriller");
+		Book book4 = new Book(1234, "book4", "thriller");
+		
+		//TEST INSERIMENTO
+		
+		bookService.saveOrUpdateBook(book1);
+		bookService.saveOrUpdateBook(book2);
+		bookService.saveOrUpdateBook(book3);
+		bookService.saveOrUpdateBook(book4);
+
+
+
+
+		
+		
+		
+	}
+
+}

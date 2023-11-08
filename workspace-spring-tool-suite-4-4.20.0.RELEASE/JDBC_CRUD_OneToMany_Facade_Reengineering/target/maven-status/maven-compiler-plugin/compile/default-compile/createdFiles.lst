@@ -1,0 +1,14 @@
+com\dto\ReviewDTO.class
+com\facade\FacadeDAOImpl.class
+com\connection\ConnectionParameters.class
+com\connection\ConnectionManagerI.class
+com\main\MainApplication.class
+com\sql\SqlScript.class
+com\dao\CourseDAOImpl.class
+com\dao\CourseDAO.class
+com\dto\CourseDTO.class
+com\vo\CourseVO.class
+com\connection\ConnectionManager.class
+com\dao\ReviewDAO.class
+com\dao\ReviewDAOImpl.class
+com\vo\ReviewVO.class
