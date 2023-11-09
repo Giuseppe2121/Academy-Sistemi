@@ -1,0 +1,80 @@
+package com.sistemi;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import com.sistemi.entity.Course;
+import com.sistemi.entity.Student;
+import com.sistemi.repository.CourseStudentRepository;
+
+@SpringBootApplication
+public class SbJpaCrudManyToManyApplication implements CommandLineRunner {
+	
+	@Autowired
+	private CourseStudentRepository repository;
+
+	public static void main(String[] args) {
+		SpringApplication.run(SbJpaCrudManyToManyApplication.class, args);
+	}
+
+	@Override
+	public void run(String... args) throws Exception {
+		
+		Course courseOne = new Course("Angular", "Google Framework");
+		Course courseTwo = new Course("React", "Faceebok Framework");
+		
+		/*
+		 * Inseriamo all'interno di una lista tutti i corsi
+		 * a cui vogliamo associare gli studenti
+		 */
+		List<Course> courses = new ArrayList<>();
+		courses.add(courseOne);
+		courses.add(courseTwo);
+	
+		
+		Student studentOne = new Student("Mario", "Rossi", 22);
+		Student studentTwo = new Student("Giovanna", "Sestito", 24);
+		
+		List<Student> students = new ArrayList<>();
+		students.add(studentOne);
+		students.add(studentTwo);
+
+		
+		courseOne.setStudents(students);
+		courseTwo.setStudents(students);
+		
+		studentOne.setCourses(courses);
+		studentTwo.setCourses(courses);
+		
+		
+		repository.addCourse(courseOne);
+		repository.addCourse(courseTwo);
+		
+		repository.addStudent(studentTwo);
+		repository.addStudent(studentTwo);
+		
+		repository.findAllCoursesByStudent(1).forEach(corsi -> System.out.println(corsi.toString()));
+        repository.findAllStudentByCourse(2).forEach(studenti -> System.out.println(studenti.toString()));
+
+
+
+		
+		
+
+
+
+		
+		
+		
+		
+		
+
+		
+	}
+
+}

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="MavenProjectWizardLocationPage">
+		<list key="location">
+			<item value="C:\Users\Academy\Documents\workspace-spring-tool-suite-4-4.20.0.RELEASE\JDBC_CRUD"/>
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+	</section>
+	<section name="MavenProjectWizardArchetypePage">
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+	</section>
+	<section name="Maven2ProjectWizardArchifactPage">
+		<list key="package">
+		</list>
+		<list key="groupId">
+		</list>
+		<list key="artifactId">
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+		<list key="version">
+			<item value="0.0.1-SNAPSHOT"/>
+		</list>
+	</section>
+	<section name="MavenProjectWizardArtifactPage">
+		<list key="groupId">
+		</list>
+		<list key="name">
+		</list>
+		<list key="artifactId">
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+		<list key="version">
+			<item value="0.0.1-SNAPSHOT"/>
+		</list>
+	</section>
+	<section name="wizardPage">
+		<list key="groupId">
+			<item value="WebApplication_Servlets_EJB"/>
+			<item value="Esercizio_18_Ottobre"/>
+			<item value="WebApplication_Servlets"/>
+			<item value="JDBC_CRUD_Builder"/>
+			<item value="JDBC_CRUD_Strategy"/>
+			<item value="EsercizioJDBC"/>
+			<item value="JDBC_CRUD_Factory"/>
+			<item value="JDBC_CRUD_ManyToMany_Facade_Reengineering"/>
+			<item value="JDBC_CRUD_ManyToMany"/>
+			<item value="JDBC_CRUD_Reengineering"/>
+			<item value="JDBC_CRUD"/>
+		</list>
+		<list key="name">
+		</list>
+		<list key="artifactId">
+			<item value="WebApplication_Servlets_EJB"/>
+			<item value="Esercizio_18_Ottobre"/>
+			<item value="WebApplication_Servlets"/>
+			<item value="JDBC_CRUD_Builder"/>
+			<item value="JDBC_CRUD_Strategy"/>
+			<item value="EsercizioJDBC"/>
+			<item value="JDBC_CRUD_Factory"/>
+			<item value="JDBC_CRUD_ManyToMany_Facade_Reengineering"/>
+			<item value="JDBC_CRUD_ManyToMany"/>
+			<item value="JDBC_CRUD_Reengineering"/>
+			<item value="JDBC_CRUD"/>
+		</list>
+		<list key="version">
+			<item value="0.0.1-SNAPSHOT"/>
+		</list>
+	</section>
+	<section name="org.eclipse.m2e.core.pom.overview">
+	</section>
+	<section name="org.eclipse.m2e.core.pom.dependencies">
+	</section>
+</section>

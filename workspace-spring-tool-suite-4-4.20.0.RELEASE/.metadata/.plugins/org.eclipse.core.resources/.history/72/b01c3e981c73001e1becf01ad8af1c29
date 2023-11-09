@@ -1,0 +1,8 @@
+package com.sistemi.entity;
+
+import java.io.Serializable;
+
+public class Review implements Serializable{
+	
+
+}

@@ -1,0 +1,11 @@
+package com.aziende;
+
+public abstract class Azienda {
+
+	public abstract void produce();
+
+	public abstract void assumere();
+
+	public abstract void fattura();
+
+}

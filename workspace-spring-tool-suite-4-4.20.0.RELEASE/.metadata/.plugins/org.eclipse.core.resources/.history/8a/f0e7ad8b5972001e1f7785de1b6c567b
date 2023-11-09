@@ -1,0 +1,108 @@
+package com.repository;
+
+import org.springframework.stereotype.Repository;
+
+import com.sistemi.entity.Student;
+
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+import jakarta.transaction.Transactional;
+/*
+ * Repository è un'annotation Stereotype
+ * quindi nel momento in cui chiederemo all'IoC
+ * Container della Spring JVM di effettuare l'@Autowired
+ * di questa classe l'IoC Container lo farà in quanto riconoscerà
+ * questa classe come uno Spring Bean, ovvero una classe istanziabile 
+ * tramite Dependency Injection
+ */
+
+@Repository
+public class StudentRepositoryImpl implements StudentRepository {
+
+	/*
+	 * Secondo le specifiche Java EE per usare l'intefaccia EntityManager occorre
+	 * inizializzare una variabile di tipo EntityManager utilizzando la seguente
+	 * procedura:
+	 */
+	@PersistenceContext
+	private EntityManager em;
+
+	@Transactional
+	public void addStudent(Student student) { // usiamo Student che sarebbe l'Entity come se fosse il DTO
+
+		/*
+		 * Hibernate nel momento in cui vede l'invocazione del metodo persist comprende
+		 * che deve effettuare un operazione di insert sul database
+		 * 
+		 * Hibernate sa che per effettuare un'operazione sul database occorre prima
+		 * aprire una connessione al database Hibernate si aspetta una istruzione
+		 * specifica per aprire la connessione al database, si aspetta in pratica
+		 * l'apertura di un contesto transazionale tramite annotation @Transactional (si
+		 * aggiunge l'annotation @Transactional al metodo, in questo caso si aggiunge al
+		 * public addStudent)
+		 */
+
+		em.persist(student);
+
+		/*
+		 * Hibernate dopo l'apertura della connesione traduce il metodo persist nel
+		 * seguente script sql: insert into student (first_name, last_name, age) values
+		 * ('student.getFirstName()', 'student.getLastName()', 'student.getAge()');
+		 * 
+		 * Hibernate chiude la connessione
+		 */
+
+	}
+
+	public void updateStudent(Student student) {
+
+		/*
+		 * quando viene invocato il metodo merge Hibernate assume che occore aggiornare
+		 * un record gia esistente all'interno del Database, per cui esegue le seguenti
+		 * azioni:
+		 * 
+		 * 1- controlla se effetivamente il record esiste (verifica se esiste un record
+		 * con la chiave primaria inserita all'interno dell'Oggetto Entity, per cui
+		 * nell'Oggetto deve essere presente l'informazione della chiave primaria)
+		 * 
+		 * 2-se il record non esiste Hibernate lancia un'eccezione
+		 * 
+		 * 3- se il record esiste Hibernate esegue l'aggiornamento
+		 */
+
+		// 1 select * from student whwere id = student.getId();
+		// 2 update student set first_name=? student.getFirstName(),
+		// last_name=student.getLastName(), age=student.getAge() where id
+		// =student.getId();
+		em.merge(student);
+
+	}
+	
+	public void removeStudent(int id) {
+		
+		/*
+		 * In input al metodo arriva l'Id dello studente da cancellare
+		 * il metodo find rappresenta un istruzione per Hibernate:
+		 * 
+		 * select * from student where id= id(input al metodo)
+		 */
+		Student student = em.find(Student.class, id);
+		
+		/*
+		 * il metodo remove viene tradotto da Hibernate nel seguente script sql:
+		 * delete from student where id=id passato in input al metodo
+		 */
+		em.remove(student);
+	}
+	
+	public void findAllStudent() {
+		
+		//JPQL
+		//select * from student
+		em.createNamedQuery("Student.findAllStudent");
+		
+		
+		
+	}
+
+}

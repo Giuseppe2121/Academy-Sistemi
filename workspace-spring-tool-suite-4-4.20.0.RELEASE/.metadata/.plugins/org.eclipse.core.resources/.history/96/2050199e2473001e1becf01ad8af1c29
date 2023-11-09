@@ -1,0 +1,51 @@
+package com.sistemi.repository;
+
+import java.util.List;
+
+import org.springframework.stereotype.Repository;
+
+import com.sistemi.entity.Course;
+import com.sistemi.entity.Review;
+import com.sistemi.entity.Student;
+
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+import jakarta.transaction.Transactional;
+
+@Transactional
+@Repository
+public class CourseReviewRepositoryImpl implements CourseReviewRepository {
+	
+	
+	@PersistenceContext
+	private EntityManager em;
+
+
+	@Override
+	public void addCourse(Course course) {
+		
+		em.persist(course);
+		
+	}
+
+	@Override
+	public void addReview(Review review) {
+		
+		em.persist(review);
+		
+	}
+
+	@Override
+	public List<Review> findAllReviewsByCourse(int courseId) {
+		
+		Course course = em.find(Course.class, courseId);
+		
+	
+		return course.getReviews();
+		
+		
+	}
+	
+	
+
+}

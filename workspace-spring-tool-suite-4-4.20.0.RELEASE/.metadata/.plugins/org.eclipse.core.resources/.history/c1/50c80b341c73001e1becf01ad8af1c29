@@ -1,0 +1,14 @@
+package com.sistemi.entity;
+
+import java.io.Serializable;
+
+import jakarta.persistence.Entity;
+
+@Entity
+public class Course implements Serializable {
+
+	private static final long serialVersionUID = 1406657763710795184L;
+	
+	
+
+}

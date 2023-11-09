@@ -1,0 +1,10 @@
+package com.sistemi.entity;
+
+import java.io.Serializable;
+
+import jakarta.persistence.Entity;
+
+@Entity
+public class Person implements Serializable{
+
+}

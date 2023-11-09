@@ -1,0 +1,12 @@
+package com.sistemi.entity;
+
+import java.io.Serializable;
+
+import jakarta.persistence.Entity;
+
+@Entity
+public class Book implements Serializable {
+
+	private static final long serialVersionUID = -7323677063962688089L;
+
+}

@@ -1,0 +1,65 @@
+package com.sistemi.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.repository.StudentRepository;
+import com.sistemi.entity.Student;
+
+@Service
+public class StudentServiceImpl implements StudentService {
+	
+	
+	/*
+	 * Spring Dependency Injection
+	 * chiediamo all IoC Container di istanziare
+	 * la clase StudentRepositoryImpl
+	 * che implementa l'interfaccia StudentRepository
+	 * 
+	 * l'IoC container istanzierà correttamente la classe StudentRepositoryImpl 
+	 * in quanto tale classe verà riconosciuta come uno Spring bean in quanto
+	 * annotata con @Repository che è un annotation di Stereorype
+	 * 
+	 * dietro le quinte l'IoC Container eseguirà la seguente azione
+	 * 
+	 * private StudentRepository studentRepositry  = new StudentRepositoryImpl();
+	 */
+	
+	@Autowired  
+	private StudentRepository studentRepository;    //mettiamo nome interfaccia della Repository
+
+	@Override
+	public void addStudent() {
+		/*
+		 * invocazione del metodo addStudent della repository
+		 * controllo se l'operazione è andata bene o male
+		 */
+		
+		
+
+	}
+
+	@Override
+	public void updateStudent(Student student) {
+	
+
+	}
+
+	@Override
+	public void removeStudent(int id) {
+		
+
+	}
+
+	@Override
+	public void findAllStudents() {
+		
+	}
+
+	@Override
+	public void findAllStudentsByLastName(String lastName) {
+		
+
+	}
+
+}

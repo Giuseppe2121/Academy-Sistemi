@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;Course.java&apos; to &apos;SB_JPA_CRUD_Many_To_Many/src/main/java/com.sistemi.entity&apos;&#x0D;&#x0A;- Original project: &apos;SB_JPA_CRUD_One_To_Many&apos;&#x0D;&#x0A;- Destination element: &apos;SB_JPA_CRUD_Many_To_Many/src/main/java/com.sistemi.entity&apos;&#x0D;&#x0A;- Original element: &apos;com.sistemi.entity.Course.java&apos;" description="Copy compilation unit" destination="=SB_JPA_CRUD_Many_To_Many/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.sistemi.entity" element1="/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.sistemi.entity{Course.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1698241411446" units="1" version="1.0"/>
+</session>

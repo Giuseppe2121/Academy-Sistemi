@@ -1,0 +1,26 @@
+package com.sistemi.entity;
+
+import java.io.Serializable;
+import java.sql.Date;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+@Entity
+public class Bancomat implements Serializable {
+
+	private static final long serialVersionUID = 6636292115771977361L;
+	
+	@Id
+	@Column(name = "code_number", length = 16)
+	private String codeNumber;
+	
+	private String bank;
+	
+	@Column(name= "expiry_date")
+	private Date expiryDate;
+	
+	
+
+}

@@ -1,0 +1,10 @@
+package com.sistemi.entity;
+
+import java.io.Serializable;
+
+public class Review implements Serializable{
+
+	private static final long serialVersionUID = -2143201067562971162L;
+	
+
+}

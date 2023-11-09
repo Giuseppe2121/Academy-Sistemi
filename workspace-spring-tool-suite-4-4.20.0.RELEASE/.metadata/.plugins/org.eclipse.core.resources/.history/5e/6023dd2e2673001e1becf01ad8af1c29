@@ -1,0 +1,13 @@
+package com.sistemi;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class SbJpaCrudOneToManyApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(SbJpaCrudOneToManyApplication.class, args);
+	}
+
+}

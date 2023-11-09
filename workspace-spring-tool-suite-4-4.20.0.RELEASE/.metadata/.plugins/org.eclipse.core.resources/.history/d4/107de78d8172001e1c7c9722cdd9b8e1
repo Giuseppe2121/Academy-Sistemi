@@ -1,0 +1,25 @@
+server.port=9090
+spring.h2.console.enabled=true
+spring.datasource.url=jdbc:h2:mem:testdb
+spring.datasource.driverClassName=org.h2.Driver
+spring.datasource.username=sa
+spring.datasource.password=
+spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
+
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.format_sql=true
+
+
+message.insert.success=Operazione Inserimento Corretta
+message.insert.fail=Operazione Inserimento Fallita
+message.update.succes=Operazione Aggiornamento Corretta
+message.update.fail=Operazione Aggiornamento Fallita
+message.delete.succes=Operazione Cancellazione Corretta
+message.delete.fail=Operazione Aggiornamento Fallita
+message.read.fail=Operazione Lettura Fallita
+
+
+
+
+
+

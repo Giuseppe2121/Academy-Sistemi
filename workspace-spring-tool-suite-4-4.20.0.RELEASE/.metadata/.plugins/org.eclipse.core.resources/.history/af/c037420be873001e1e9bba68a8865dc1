@@ -1,0 +1,45 @@
+package com.sistemi.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.sistemi.entity.Book;
+import com.sistemi.repository.BookRepository;
+
+
+
+@Service
+public class BookServiceImpl implements BookService {
+	
+	@Autowired
+	private BookRepository bookrepository;
+
+	@Override
+	public void saveOrUpdateBook(Book book) {
+		
+		/*
+		 * quando invochiamo il metodo save
+		 * l'invocazione viene tradotta da Spring Data Jpa 
+		 * nel seguente codice:
+		 * 
+		 * @PersistenceContext
+		 * private EntityManager em;
+		 * 
+		 * em.persist
+		 * 
+		 */
+		bookrepository.save(book);
+		
+	}
+
+	@Override
+	public void removeBook(long isbn) {
+		
+	}
+
+	@Override
+	public void findAllBooks() {
+		
+	}
+
+}

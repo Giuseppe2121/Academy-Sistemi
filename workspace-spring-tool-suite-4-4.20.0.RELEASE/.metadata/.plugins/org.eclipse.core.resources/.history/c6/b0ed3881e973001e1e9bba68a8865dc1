@@ -1,0 +1,72 @@
+package com.sistemi.service;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
+
+import com.sistemi.entity.Book;
+import com.sistemi.repository.BookRepository;
+
+
+
+@Service
+public class BookServiceImpl implements BookService {
+	
+	Logger log = LoggerFactory.getLogger(this.getClass());
+	
+	@Value("${message.save.success}")
+	private String saveSuccess;
+	@Value("${message.save.fail}")
+	private String saveFail;
+	@Value("${message.remove.success}")
+	private String removeSuccess;
+	@Value("${message.remove.fail}")
+	private String removeFail;
+	@Value("${message.read.fail}")
+	private String readFail;
+	
+	
+	@Autowired
+	private BookRepository bookrepository;
+
+	@Override
+	public void saveOrUpdateBook(Book book) {
+		
+		try {
+			
+			bookrepository.save(book);
+			
+			}
+		
+		catch(IllegalArgumentException ex) {
+			
+			
+		}
+		/*
+		 * quando invochiamo il metodo save
+		 * l'invocazione viene tradotta da Spring Data Jpa 
+		 * nel seguente codice:
+		 * 
+		 * @PersistenceContext
+		 * private EntityManager em;
+		 * 
+		 * em.persist(book) oppure
+		 * em.merge(book)
+		 * 
+		 */
+		
+	}
+
+	@Override
+	public void removeBook(long isbn) {
+		
+	}
+
+	@Override
+	public void findAllBooks() {
+		
+	}
+
+}
